@@ -1,0 +1,13 @@
+! ============================================================================
+! loads.dss — Load definitions
+! All loads are constant power (model=1) for fault study purposes.
+! Load shapes are not used in fault study mode — these are steady-state loads
+! used to establish the pre-fault operating point.
+!
+! L1 end: 150 kW, 70 kVAr — residential
+! L2 end: 80 kW, 35 kVAr  — mixed residential/commercial
+! L3 end: 60 kW, 25 kVAr  — residential
+! ============================================================================
+
+! To be populated in Section 2
+

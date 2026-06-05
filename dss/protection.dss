@@ -1,0 +1,19 @@
+! ============================================================================
+! protection.dss — Recloser RC1 and fuse elements F1, F2, F3
+!
+! RC1: Located at Bus1 (substation outgoing)
+!   Fast curve (I-curve): ANSI Curve 1 (very inverse) — IEC designation: VI
+!   Slow curve (T-curve): ANSI Curve 2
+!   Sequence: Fast-Fast-Slow-Slow then lockout
+!   Rating: 200 A, 15 kV
+!
+! F1: 100 A fuse on Lateral L1 at Bus2 tap
+! F2:  65 A fuse on Lateral L2 at Bus3 tap
+! F3:  65 A fuse on Lateral L3 at Bus4 tap
+!
+! Fuse type: K-type expulsion fuse (standard SA distribution practice)
+! TCC data sourced from manufacturer datasheets — stated in assumptions register
+! ============================================================================
+
+! To be populated in Section 2
+

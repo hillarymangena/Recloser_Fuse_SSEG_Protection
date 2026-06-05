@@ -1,0 +1,20 @@
+! ============================================================================
+! sseg.dss — SSEG PV inverter cluster models
+!
+! L1 cluster: 420 kW total at L1 midpoint
+!   35 residential inverters × 12 kW average
+!   Fault current contribution: 1.2 pu rated for first 3 cycles, then limiting
+!
+! L2 cluster: 220 kW total at L2 midpoint
+!   12 residential × 10 kW = 120 kW + 100 kW school = 220 kW
+!   Same inverter fault model
+!
+! Power factor: 0.95 leading (NRS 097-2-1 compliant injection)
+! Anti-islanding: IEEE 1547 — OV trip 10 cycles, UF trip 20 cycles
+!
+! NOTE: This file is NOT redirected from master.dss in the pre-SSEG baseline.
+! Enable by uncommenting the Redirect sseg.dss line in master.dss for Section 3.
+! ============================================================================
+
+! To be populated in Section 3
+

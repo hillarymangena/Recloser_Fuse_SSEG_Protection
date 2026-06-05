@@ -1,0 +1,30 @@
+! ============================================================================
+! network.dss — Bus definitions, source, lines
+! Feeder topology: Source → Bus1 → Bus2 → Bus3 → Bus4 (main trunk)
+!                  Bus2 tap → L1 end bus
+!                  Bus3 tap → L2 end bus
+!                  Bus4 tap → L3 end bus
+! ============================================================================
+
+! --- Source: 66/11 kV substation Thevenin equivalent ---
+! Zs = 0.005 + j0.05 pu on 20 MVA base, 11 kV
+! To be defined in Section 2
+
+! --- Main trunk line: Bus1 to Bus4 ---
+! Hare ACSR, 3 km total, segmented at Bus2 and Bus3
+! r1 = 0.342 Ohm/km, x1 = 0.310 Ohm/km
+! r0 = 0.910 Ohm/km, x0 = 0.980 Ohm/km
+! To be defined in Section 2
+
+! --- Lateral L1: Bus2 tap ---
+! 0.8 km, same conductor
+! To be defined in Section 2
+
+! --- Lateral L2: Bus3 tap ---
+! 0.6 km, same conductor
+! To be defined in Section 2
+
+! --- Lateral L3: Bus4 tap ---
+! 0.5 km, same conductor
+! To be defined in Section 2
+

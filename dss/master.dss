@@ -1,0 +1,34 @@
+! ============================================================================
+! PROJECT 2 — Recloser-Fuse Coordination with SSEG
+! Municipality: Western Cape Distribution
+! Feeder: 11 kV suburban feeder with rooftop solar
+! Engineer: [Your Name]
+! Date: [Date]
+! Version: 1.0 — baseline (pre-SSEG)
+!
+! Execution order matters. OpenDSS processes commands top-to-bottom.
+! network.dss must come before loads.dss (buses must exist before loads attach).
+! protection.dss comes last — protection elements reference line and bus objects.
+! ============================================================================
+
+Clear
+
+! System base
+Set DefaultBaseFrequency=50
+
+! Source and network topology
+Redirect network.dss
+
+! Load definitions
+Redirect loads.dss
+
+! SSEG generator models (commented out for pre-SSEG baseline)
+! Redirect sseg.dss
+
+! Protection elements — recloser and fuses
+Redirect protection.dss
+
+! Solve and export
+Set Mode=Faultstudy
+Solve
+
