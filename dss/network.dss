@@ -1,30 +1,41 @@
 ! ============================================================================
-! network.dss — Bus definitions, source, lines
-! Feeder topology: Source → Bus1 → Bus2 → Bus3 → Bus4 (main trunk)
-!                  Bus2 tap → L1 end bus
-!                  Bus3 tap → L2 end bus
-!                  Bus4 tap → L3 end bus
+! network.dss — Pre-SSEG feeder topology
+!
+! Source: 66/11 kV, 20 MVA transformer
+!   Zs = 0.005 + j0.05 pu on 20 MVA base (as specified)
+!   Zbase = 11^2 / 20 = 6.05 ohm
+!   R1 = 0.005 * 6.05 = 0.03025 ohm
+!   X1 = 0.050 * 6.05 = 0.30250 ohm
+!   Isc3 = 11000 / (sqrt(3) * 0.3041) = 20 890 A  [X1R1 = 10]
+!   Z0: R0 = 3*R1 = 0.09075, X0 = 3*X1 = 0.90750 (Assumption A2)
+!
+! Conductor: Hare ACSR throughout
+!   r1 = 0.342 ohm/km, x1 = 0.310 ohm/km (positive sequence)
+!   r0 = 0.910 ohm/km, x0 = 0.980 ohm/km (zero sequence)
+!
+! Trunk topology (Assumption A1 — equal 1 km segments):
+!   sourcebus (Bus1) -- 1 km -- Bus2 -- 1 km -- Bus3 -- 1 km -- Bus4
+!
+! Laterals:
+!   Bus2 -- 0.8 km -- L1_End
+!   Bus3 -- 0.6 km -- L2_End
+!   Bus4 -- 0.5 km -- L3_End
 ! ============================================================================
 
-! --- Source: 66/11 kV substation Thevenin equivalent ---
-! Zs = 0.005 + j0.05 pu on 20 MVA base, 11 kV
-! To be defined in Section 2
+New Circuit.WestCape11kV basekv=11 pu=1.0 angle=0 frequency=50 phases=3
+~ Isc3=20890 Isc1=12515 X1R1=10 X0R0=10
 
-! --- Main trunk line: Bus1 to Bus4 ---
-! Hare ACSR, 3 km total, segmented at Bus2 and Bus3
-! r1 = 0.342 Ohm/km, x1 = 0.310 Ohm/km
-! r0 = 0.910 Ohm/km, x0 = 0.980 Ohm/km
-! To be defined in Section 2
+New LineCode.HareACSR nphases=3 r1=0.342 x1=0.310 r0=0.910 x0=0.980 units=km
 
-! --- Lateral L1: Bus2 tap ---
-! 0.8 km, same conductor
-! To be defined in Section 2
+! Main trunk
+New Line.Trunk_B1_B2 phases=3 bus1=sourcebus bus2=Bus2 linecode=HareACSR length=1.0 units=km
+New Line.Trunk_B2_B3 phases=3 bus1=Bus2     bus2=Bus3 linecode=HareACSR length=1.0 units=km
+New Line.Trunk_B3_B4 phases=3 bus1=Bus3     bus2=Bus4 linecode=HareACSR length=1.0 units=km
 
-! --- Lateral L2: Bus3 tap ---
-! 0.6 km, same conductor
-! To be defined in Section 2
+! Laterals
+New Line.Lateral_L1 phases=3 bus1=Bus2 bus2=L1_End linecode=HareACSR length=0.8 units=km
+New Line.Lateral_L2 phases=3 bus1=Bus3 bus2=L2_End linecode=HareACSR length=0.6 units=km
+New Line.Lateral_L3 phases=3 bus1=Bus4 bus2=L3_End linecode=HareACSR length=0.5 units=km
 
-! --- Lateral L3: Bus4 tap ---
-! 0.5 km, same conductor
-! To be defined in Section 2
-
+Set VoltageBases=[11]
+CalcVoltageBases

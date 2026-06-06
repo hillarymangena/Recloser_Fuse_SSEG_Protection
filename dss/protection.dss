@@ -1,19 +1,21 @@
 ! ============================================================================
-! protection.dss — Recloser RC1 and fuse elements F1, F2, F3
+! protection.dss — Protection elements
 !
-! RC1: Located at Bus1 (substation outgoing)
-!   Fast curve (I-curve): ANSI Curve 1 (very inverse) — IEC designation: VI
-!   Slow curve (T-curve): ANSI Curve 2
-!   Sequence: Fast-Fast-Slow-Slow then lockout
-!   Rating: 200 A, 15 kV
+! Section 2: EnergyMeter only. Recloser and Fuse objects added in Section 3.
+! Fault current extraction is done via the Python API reading line element
+! currents directly — no OpenDSS protection objects needed for the baseline
+! fault study.
 !
-! F1: 100 A fuse on Lateral L1 at Bus2 tap
-! F2:  65 A fuse on Lateral L2 at Bus3 tap
-! F3:  65 A fuse on Lateral L3 at Bus4 tap
+! RC1 settings (to be implemented as OpenDSS Recloser in Section 3):
+!   MonitoredObj = Line.Trunk_B1_B2, terminal 1
+!   Fast curve:  ANSI Very Inverse, TDS=0.1, Ipickup=200A
+!   Slow curve:  ANSI Very Inverse, TDS=1.0, Ipickup=200A
+!   Reclose sequence: Fast-Fast-Slow-Slow, lockout
 !
-! Fuse type: K-type expulsion fuse (standard SA distribution practice)
-! TCC data sourced from manufacturer datasheets — stated in assumptions register
+! Fuse F1: 100A, Line.Lateral_L1, terminal 1 (Bus2 tap)
+! Fuse F2:  65A, Line.Lateral_L2, terminal 1 (Bus3 tap)
+! Fuse F3:  65A, Line.Lateral_L3, terminal 1 (Bus4 tap)
 ! ============================================================================
 
-! To be populated in Section 2
-
+! Feeder energy meter — required for OpenDSS zone calculation and loss reporting
+New EnergyMeter.Feeder element=Line.Trunk_B1_B2 terminal=1

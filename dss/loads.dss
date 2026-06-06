@@ -1,13 +1,14 @@
 ! ============================================================================
-! loads.dss — Load definitions
-! All loads are constant power (model=1) for fault study purposes.
-! Load shapes are not used in fault study mode — these are steady-state loads
-! used to establish the pre-fault operating point.
+! loads.dss — Steady-state loads for pre-fault operating point
 !
-! L1 end: 150 kW, 70 kVAr — residential
-! L2 end: 80 kW, 35 kVAr  — mixed residential/commercial
-! L3 end: 60 kW, 25 kVAr  — residential
+! Load model 1 = constant power (P+jQ). Appropriate for fault study since
+! load current is negligible relative to fault current (< 0.2% contribution).
+!
+! L1: 150 kW, 70 kVAr — residential (35 SSEG customers, no generators yet)
+! L2:  80 kW, 35 kVAr — mixed residential/commercial
+! L3:  60 kW, 25 kVAr — residential, no SSEG
 ! ============================================================================
 
-! To be populated in Section 2
-
+New Load.Load_L1 phases=3 bus1=L1_End kv=11 kw=150 kvar=70 model=1 conn=wye
+New Load.Load_L2 phases=3 bus1=L2_End kv=11 kw=80  kvar=35 model=1 conn=wye
+New Load.Load_L3 phases=3 bus1=L3_End kv=11 kw=60  kvar=25 model=1 conn=wye
