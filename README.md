@@ -1,14 +1,11 @@
 # Recloser–Fuse Coordination on an 11 kV Feeder with Rooftop Solar (SSEG)
 
-**Protection Engineering Project Series · SA / SADC Region**
+**Protection Engineering Project · SA / SADC Region**
 
 ## Overview
 
-A full protection coordination study of an 11 kV suburban distribution feeder
-experiencing SSEG (rooftop solar PV) penetration under NRS 097-2-1:2024.
-
-The study demonstrates how SSEG infeed degrades recloser-fuse coordination,
-quantifies the degradation, and evaluates three protection philosophy options.
+This project investigates the impact of rooftop solar PV penetration on an existing 11 kV fuse-saving protection scheme for a Western Cape municipality feeder, addressing one of the most operationally live protection challenges currently facing South African distribution utilities. With 520 kW of NRS 097-2-1-compliant SSEG connected across two laterals, the study demonstrates how inverter fault current contribution inverts the recloser-fuse coordination ratio, causing the fuse to blow before the recloser clears — invalidating the fuse-saving philosophy the scheme was built on. The work is modelled in OpenDSS via Python, covering pre- and post-SSEG fault studies, anti-islanding window analysis, and reclose timing safety assessment. Three remediation options are evaluated against NRS 097-2-1 compliance obligations, service continuity, and maintenance burden, culminating in a structured protection philosophy decision matrix. The recommended target-state solution — direct transfer trip from the recloser to SSEG inverters via GOOSE messaging — positions the feeder for increasing solar penetration under the current regulatory trajectory.
+All scripts and DSS files are version-controlled and reproducible at zero cost. A notable limitation of OpenDSSDirect.py on Linux is the absence of native GUI plotting and full time-series dynamic simulation, which constrains the anti-islanding analysis to steady-state approximations. A professional study would supplement this with real-time digital simulation (RTDS or PSCAD) to capture inverter control loop behaviour during fault transients with the precision that utility commissioning decisions require.
 
 ## Tools
 
