@@ -36,10 +36,10 @@ All scripts and DSS files are version-controlled and reproducible at zero cost. 
 | Section | Description                                   | Status   |
 |---------|-----------------------------------------------|----------|
 | 1       | Environment setup, project structure          | Complete |
-| 2       | Pre-SSEG baseline network and fault study     | Pending  |
-| 3       | SSEG integration and coordination degradation | Pending  |
-| 4       | Protection philosophy decision                | Pending  |
-| 5       | Senior analysis and stress testing            | Pending  |
+| 2       | Pre-SSEG baseline network and fault study     | Complete  |
+| 3       | SSEG integration and coordination degradation | Ongoing  |
+| 4       | Protection philosophy decision                | Complete |
+| 5       | Senior analysis and stress testing            | Ongoing  |
 
 ## Standards Referenced
 
